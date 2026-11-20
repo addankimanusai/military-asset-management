@@ -1,0 +1,25 @@
+{
+  "name": "military-asset-management",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Military Asset Management System tracking critical military assets with strict RBAC, ACID compliance, and end-to-end visibility.",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "db:init": "cd backend && npm run db:init",
+    "db:seed": "cd backend && npm run db:seed",
+    "test": "cd backend && node scripts/testEndpoints.js"
+  },
+  "keywords": [
+    "military",
+    "asset-management",
+    "rbac",
+    "postgresql",
+    "react",
+    "vite",
+    "inventory-reconciliation"
+  ],
+  "author": "Google DeepMind Engineer",
+  "license": "ISC"
+}
