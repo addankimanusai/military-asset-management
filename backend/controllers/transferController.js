@@ -130,7 +130,7 @@ export const createTransfer = async (req, res) => {
         source_base_id, destination_base_id, equipment_type_id,
         quantity, status, notes, initiated_by, timestamp, completed_at
       )
-      VALUES ($1, $2, $3, $4, $5, $6, $7, CURRENT_TIMESTAMP, CASE WHEN $5 = 'COMPLETED' THEN CURRENT_TIMESTAMP ELSE NULL END)
+      VALUES ($1, $2, $3, $4, $5::varchar, $6, $7, CURRENT_TIMESTAMP, CASE WHEN $5::varchar = 'COMPLETED' THEN CURRENT_TIMESTAMP ELSE NULL END)
       RETURNING *;
     `;
     const transferRes = await client.query(transferQuery, [
