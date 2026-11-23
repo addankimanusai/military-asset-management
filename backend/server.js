@@ -40,23 +40,27 @@ app.use(morgan('dev'));
 app.use(apiAuditLogger);
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
+const healthHandler = (req, res) => {
   res.status(200).json({
     status: 'ONLINE',
     system: 'Military Asset Management System API',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
   });
-});
+};
 
-// Mount modular API routes
-app.use('/api/auth', authRoutes);
-app.use('/api/assets', assetRoutes);
-app.use('/api/purchases', purchaseRoutes);
-app.use('/api/transfers', transferRoutes);
-app.use('/api/assignments', assignmentRoutes);
-app.use('/api/audit-logs', auditRoutes);
-app.use('/api/meta', metaRoutes);
+app.get('/api/health', healthHandler);
+app.get('/health', healthHandler);
+app.get('/', healthHandler);
+
+// Mount modular API routes (supports both /api/* and root /*)
+app.use(['/api/auth', '/auth'], authRoutes);
+app.use(['/api/assets', '/assets'], assetRoutes);
+app.use(['/api/purchases', '/purchases'], purchaseRoutes);
+app.use(['/api/transfers', '/transfers'], transferRoutes);
+app.use(['/api/assignments', '/assignments'], assignmentRoutes);
+app.use(['/api/audit-logs', '/audit-logs'], auditRoutes);
+app.use(['/api/meta', '/meta'], metaRoutes);
 
 // 404 handler for unknown routes
 app.use((req, res) => {
