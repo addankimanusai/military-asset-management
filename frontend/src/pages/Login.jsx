@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Shield, Lock, User, KeyRound, AlertTriangle, ArrowRight, ShieldCheck, Truck, Crosshair } from 'lucide-react';
+import { Shield, Lock, User, AlertTriangle, ArrowRight } from 'lucide-react';
 
 export const Login = () => {
-  const [username, setUsername] = useState('admin_user');
-  const [password, setPassword] = useState('AdminPass123!');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const { login, isLoading } = useAuth();
   const navigate = useNavigate();
@@ -19,12 +19,6 @@ export const Login = () => {
     } else {
       setErrorMessage(result.error);
     }
-  };
-
-  const setCredentials = (user, pass) => {
-    setUsername(user);
-    setPassword(pass);
-    setErrorMessage('');
   };
 
   return (
@@ -112,72 +106,6 @@ export const Login = () => {
               )}
             </button>
           </form>
-
-          {/* Quick Credential Switcher for Demo / Testing */}
-          <div className="mt-8 pt-6 border-t border-slate-800">
-            <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-3 text-center">
-              Quick Test Credentials (1-Click Fill)
-            </p>
-
-            <div className="grid grid-cols-1 gap-2">
-              <button
-                type="button"
-                onClick={() => setCredentials('admin_user', 'AdminPass123!')}
-                className="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/60 hover:bg-purple-950/30 border border-slate-800 hover:border-purple-600/50 text-left transition group"
-              >
-                <div className="flex items-center gap-2.5">
-                  <ShieldCheck className="w-4 h-4 text-purple-400" />
-                  <div>
-                    <div className="text-xs font-bold text-slate-200 group-hover:text-purple-300">
-                      General Arthur (Admin)
-                    </div>
-                    <div className="text-[10px] text-slate-500 font-mono">admin_user | Global HQ</div>
-                  </div>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                  ALL BASES
-                </span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setCredentials('commander_alpha', 'CommandPass123!')}
-                className="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/60 hover:bg-emerald-950/30 border border-slate-800 hover:border-emerald-600/50 text-left transition group"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Crosshair className="w-4 h-4 text-emerald-400" />
-                  <div>
-                    <div className="text-xs font-bold text-slate-200 group-hover:text-emerald-300">
-                      Col. Vance (Base Commander)
-                    </div>
-                    <div className="text-[10px] text-slate-500 font-mono">commander_alpha | Fort Alpha</div>
-                  </div>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                  BASE #1
-                </span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setCredentials('logistics_officer', 'LogisticsPass123!')}
-                className="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/60 hover:bg-cyan-950/30 border border-slate-800 hover:border-cyan-600/50 text-left transition group"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Truck className="w-4 h-4 text-cyan-400" />
-                  <div>
-                    <div className="text-xs font-bold text-slate-200 group-hover:text-cyan-300">
-                      Maj. Elena (Logistics Officer)
-                    </div>
-                    <div className="text-[10px] text-slate-500 font-mono">logistics_officer | Supply Ops</div>
-                  </div>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                  MOVEMENTS
-                </span>
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Footer Info */}

@@ -98,7 +98,7 @@ Use these credentials to test role switching and data scoping:
 | **Base Commander (Bravo)** | `commander_bravo` | `CommandPass123!` | Fort Bravo (Base #2) | Locked to Fort Bravo. Exercises armory control over Base #2. |
 | **Logistics Officer** | `logistics_officer` | `LogisticsPass123!` | Base #1 / Global Ops | Supply chain management, cross-base convoy dispatching, procurement logging. |
 
-> 💡 *The frontend login screen includes one-click buttons to instantly autofill test credentials!*
+> 💡 *Enter any of the test credentials above into the secure login screen to test role-based views and permissions.*
 
 ---
 
@@ -147,7 +147,7 @@ military-asset-management/
 │   │   │   ├── Transfers.jsx     # Cross-base transfer dispatch & convoy tracking
 │   │   │   ├── Assignments.jsx   # Personnel allocation & expended ammunition tabs
 │   │   │   ├── AuditLogs.jsx     # Central security & mutation audit trail
-│   │   │   └── Login.jsx         # Command authentication with 1-click test fill
+│   │   │   └── Login.jsx         # Command authentication portal with secure credentials
 │   │   ├── services/
 │   │   │   └── api.js            # Axios client with JWT request/response interceptors
 │   │   ├── context/
